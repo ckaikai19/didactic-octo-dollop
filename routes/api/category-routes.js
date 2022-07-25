@@ -13,7 +13,8 @@ router.get('/', (req, res) => {
             }
         ]
   })
-    .then(data => res.json(data))
+  .then(data => res.json(data));
+
 });
 
 router.get('/:id', (req, res) => {
@@ -28,17 +29,26 @@ router.get('/:id', (req, res) => {
             attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
         }]
     })
-    .then(data => res.json(data))
-
+    .then(data => res.json(data));
 
 });
 
 router.post('/', (req, res) => {
-  // create a new category
+  
+  Category.create({
+    category_name: req.body.category_name
+  })
+    .then(data => res.json(data))
 });
 
 router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+
+  Category.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(data => res.json(data))
 });
 
 router.delete('/:id', (req, res) => {
