@@ -13,10 +13,8 @@ Tag.init(
         autoIncrement: true
     },
 
-    
-    category_name: {
-        type: DataTypes.STRING,
-        allowNull: false
+    tag_name: {
+        type: DataTypes.STRING
     }
   },
   {
