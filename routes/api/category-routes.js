@@ -18,16 +18,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-
-    Category.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: ['id', 'category_name'],
-        include: [{
-            model: Product,
-            attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
-        }]
+  Category.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'category_name'],
+    include: [{
+        model: Product,
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
+      }]
     })
     .then(data => res.json(data));
 
